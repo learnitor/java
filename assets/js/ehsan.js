@@ -36,15 +36,12 @@ function bYC(by) {
 }
 
 var F = function(x,a) {
-//  return Math.sin(x) ;
 	return  eval(document.getElementById('function-code').value) ;
 } ;
 var F1 = function(t,r,k,a) {
-//  return Math.sin(x) ;
 	return  eval(document.getElementById('funp1').value) ;
 } ;
 var F2 = function(t,r,k,a) {
-//  return Math.sin(x) ;
 	return  eval(document.getElementById('funp2').value) ;
 } ;
 
@@ -62,7 +59,7 @@ function RasmKon() {
   setMinMaxY(F);
   DrawAxes() ;
 
-   RenderFunction(F) ;
+   bekesh(F) ;
   
   } else {
     // Do nothing.
@@ -81,7 +78,7 @@ function RasmKonP() {
 setMinMaxYP();
   DrawAxes() ;
 
-   RenderFunctionP(F1,F2) ;
+   bekeshP(F1,F2) ;
   
   } else {
     // Do nothing.
@@ -106,7 +103,7 @@ function SetNextPoint(a,r,k,t) {
 }
 
 
-function RenderFunction(f) {
+function bekesh(f) {
 	var first = true;
 	var a = document.getElementById("zariba").value;
 	Ctx.beginPath() ;
@@ -123,7 +120,7 @@ function RenderFunction(f) {
 	Ctx.strokeStyle = '#cafff9';
 	Ctx.stroke() ;
 }
-function RenderFunctionP(f,g) {
+function bekeshP(f,g) {
 	var first = true;
 	var a = document.getElementById("zariba2").value;
 	var r = document.getElementById("rads1").value;
