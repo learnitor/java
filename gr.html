@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="keywords" content="بازی ریاضی منحنی رسم منحنی">
+    <meta name="description" content="رسم منحنی اپیساکلوید و هیپوساکلوید">
+	<meta name="topic" content="رسم منحنی های ریاضی">
+	<meta name="subject" content="رسم منحنی">
+		<meta name="og:email" content="parsa@falcongunsmith.com"/>
+	<meta name="og:region" content="IR"/>
+	<meta name="og:country-name" content="IRAN"/>
+    <meta property="og:image" content="assets/images/logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="200">
+    <meta property="og:image:height" content="200">
+    <meta property="og:type" content="website" />
+
+<title>رسم منحنی های ریاضی - طراح احسان احمدی</title>
+<link href="assets/css/gr.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+	
+	<div id="maindiv" class="cont1">
+		<p>  رسم منحنی های ریاضی - کانال لرنیتو</p>
+	
+	
+	
+	<canvas class="canvascl" width="1000" height="680" id="ehsanGraph" onmousemove="showCoords(event)"></canvas>
+		<p id="pasli">
+			<input id="function-code" type="text" value="Math.sin(a*x)" />
+		
+ 	<label for="zariba">a=</label> 
+	<input type="text" id="zariba" value="2">
+			 <select id="funcs" name="funcs" onChange="selFun()">
+    <option value="Math.sin(a*x)">sin(ax)</option>
+    <option value="Math.tan(a*x)">tan(ax)</option>
+    <option value="Math.pow(x,a)">y = x ^ a</option>
+    <option value="Math.sin(a*x)/(a*x)">y = Sinc(ax)</option>
+    <option value="Math.sin(Math.pow(x,a))">sin(x^a)</option>
+    <option value="Math.sinh(a*x)">sinh(ax)</option>
+  </select>
+
+		<button onclick="myCanvas()">رسم منحنی توابع</button>	
+	</p>	
+		
+		<p id="pasli2">
+			<label>x=</label><input id="funp1" type="text" value="r*(k+1)*Math.cos(t)-r*Math.cos((k+1)*t)" />
+			<label>r=</label><input id="rads1" type="text" value="1" />
+			<label>AxisX=</label><input id="Axx" type="text" value="3.5" />
+			
+	<label for="zariba2">rep=</label> 
+	<input type="text" id="zariba2" value="100">
+		<button onclick="myCanvas2()">رسم این تابع پارامتریک</button>	
+	</p>
+		<p id="pasli3">
+		<label>y=</label><input id="funp2" type="text" value="r*(k+1)*Math.sin(t)-r*Math.sin((k+1)*t)" />
+		<label>k=</label><input id="rads2" type="text" value="2.1" />
+		<label>AxisY=</label><input id="Axy" type="text" value="3.5" />
+		<label>spd=</label><input id="Spyd" type="text" value="20" />
+			<button onclick="myCanvas3()">رسم آرام آرام</button>
+		
+		</p>
+		<p>
+		<select id="funcs2" name="funcs2" onChange="selFun2()">
+			<option value="Epicycloid">Epicycloid</option>
+			<option value="Hypocycloid">Hypocycloid</option>
+  		</select>
+		</p>
+		<p id="idxy">x y</p>
+		
+	<p>معادله ی ریاضی را وارد کنید. سینتکس باید معادل معادلات جاوا باشد مثال:</p>
+		<p>برای سینوس ایکس بنویسید Math.sin(x) ضریب a را در هر کجای معادله میتوان گذاشت</p>
+		<p></p>
+	
+		</div>
+	
+</body>
+<script src="assets/js/canvas-graph.js"></script>
+<script>
+// ********************پیدا کردن مختصات کانواس
+var ctt = document.getElementById("ehsanGraph");
+var dvv = document.getElementById("maindiv");
+var tCounter=0;
+	var first = true;
+function reOffset(){
+  var CC=ctt.getBoundingClientRect();
+var CC2=dvv.getBoundingClientRect();
+	
+  offsetX=CC.left;
+  offsetY=CC.top;        
+}
+var offsetX,offsetY;
+reOffset();
+window.onscroll=function(e){ reOffset(); }
+window.onload=function(e){ reOffset(); }
+//*********************************************
+
+
+
+
+
+	
+function selFun(){
+	
+	var oopp = document.getElementById("funcs").value;	
+
+	document.getElementById("function-code").value = oopp;
+}
+function selFun2(){
+	
+	var oopp = document.getElementById("funcs2").value;	
+	if(oopp=="Epicycloid")
+		{
+			document.getElementById("funp1").value = "r*(k+1)*Math.cos(t)-r*Math.cos((k+1)*t)";
+			document.getElementById("funp2").value = "r*(k+1)*Math.sin(t)-r*Math.sin((k+1)*t)";
+		}
+	else if(oopp=="Hypocycloid")
+		{
+			document.getElementById("funp1").value = "r*(k-1)*Math.cos(t)+r*Math.cos((k-1)*t)";
+			document.getElementById("funp2").value = "r*(k-1)*Math.sin(t)-r*Math.sin((k-1)*t)";
+		}
+	
+}
+	
+	
+function myCanvas() {
+  
+	
+	RasmKon() ;
+	
+}
+function myCanvas2() {
+  
+	
+	RasmKonP() ;
+	
+}
+	
+function myCanvas3() {
+  
+	ctt =  Canvas.getContext('2d');
+    var Wid = ctt.width ;
+    var Hei = ctt.height ;
+	ctt.clearRect(0,0,Wid,Hei) ;
+	if (first) {
+	setMinMaxYP();
+	DrawAxesP2(ctt);
+	}
+	var a = document.getElementById("zariba2").value;
+	var r = document.getElementById("rads1").value;
+	var k = document.getElementById("rads2").value;
+	var sppp = document.getElementById("Spyd").value;
+	    tCounter += 0.1;
+		SetNextPoint(a,r,k,tCounter);
+		if (first) {
+		ctt.moveTo(pX1,pY1) ;
+		
+		} else {
+			ctt.lineTo(pX1,pY1) ;
+		}
+		ctt.strokeStyle = '#cafff9';
+		ctt.stroke() ;
+		ctt.restore();
+	
+	first = false ;
+	 myVar = setTimeout(myCanvas3, sppp);
+		
+		
+}
+
+</script>
+</html>

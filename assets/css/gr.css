@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+	
+       font-family: 'VazirRegular';
+    /*src:url('font/Vazir-Regular.eot');*/
+    src: url('fonts/Vazir-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+
+}
+
+	html , body{
+	font-family:"VazirRegular";
+		
+		direction: rtl;
+}
+.canvascl{
+	
+	margin: 0 auto;
+	border:1px solid #ded0d0;
+	display: block;
+	direction: ltr!important;
+	
+}
+
+button{
+	font-family:"VazirRegular";
+	font-size: 16px;
+	background-image: linear-gradient(90deg, #579cff 30%, #4bdcff 100%);
+	cursor: pointer;
+	border-radius: 10px;
+}
+p{
+	font-family: "Courier New";
+	font-size: 16px;
+	margin-right: 45px;
+	margin-left: 45px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+#function-code{
+	width: 200px;
+	font-size: 14px;
+}	
+#zariba{
+	width: 50px;
+	font-size: 14px;
+}
+#pasli{
+	direction: ltr;
+	font-size: 14px;
+	
+}
+#funp1{
+	width: 300px;
+	font-size: 14px;
+}	
+#funp2{
+	width: 300px;
+	font-size: 14px;
+}	
+#zariba2{
+	width: 30px;
+	font-size: 14px;
+}
+#rads1{
+	width: 30px;
+	font-size: 14px;
+}
+#rads2{
+	width: 30px;
+	font-size: 14px;
+}
+#Axx{
+	width: 30px;
+	font-size: 14px;
+}
+#Axy{
+	width: 30px;
+	font-size: 14px;
+}
+#Spyd{
+	width: 30px;
+	font-size: 14px;
+}
+
+#pasli2{
+	direction: ltr;
+	font-size: 14px;
+	border-top: 1px dashed #FFF736;
+	padding-top: 5px;
+}
+#pasli3{
+	direction: ltr;
+	font-size: 14px;
+	
+}
+
+#funcs{
+		direction: ltr;
+	font-size: 18px;
+
+}
+#funcs2{
+		direction: ltr;
+	font-size: 16px;
+
+}
+
+	.cont1{
+		background-color: #030800;
+		color: #DDFFBB;
+		border-radius: 20px;
+		font-size: 20px;
+		margin: 0 auto;
+		min-height: 500px;
+		min-width: 1100px;
+		max-width: 1100px;
+	}
